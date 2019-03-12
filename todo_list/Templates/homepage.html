@@ -11,13 +11,15 @@ To-Do-App
             {% for thing in allItems %}
                 {%if thing.completed == True%}
                     <tr class="table-success">
-                        <td><strike>{{thing.item}}</strike></td>
-                        <td><center>Delete</center></td>
+                        <td><strike><a href="{%url 'edit' thing.id%}">{{thing.item}}</a></strike></td>
+                        <td><center><a href="{%url 'uncross' thing.id%}"> Uncross </a></center></td>
+                        <td><center><a href="{%url 'delete' thing.id%}"> Delete </a></center></td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td>{{thing.item}}</td>
-                        <td><center>Delete</center></td>
+                        <td><a href="{%url 'edit' thing.id%}">{{thing.item}}</a></td>
+                        <td><center><a href="{%url 'cross' thing.id%}"> Cross </a></center></td>
+                        <td><center><a href="{%url 'delete' thing.id%}"> Delete </a></center></td>
                     </tr>
                 {% endif %}
             {% endfor %}
