@@ -5,5 +5,23 @@ To-Do-App
 {% endblock %}
 
 {% block content %}
-<h1> This is homepage</h1>
+    {% if allItems %}
+        <table class="table table-bordered">
+
+            {% for thing in allItems %}
+                {%if thing.completed == True%}
+                    <tr class="table-success">
+                        <td><strike>{{thing.item}}</strike></td>
+                        <td><center>Delete</center></td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td>{{thing.item}}</td>
+                        <td><center>Delete</center></td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+
+        </table>
+    {% endif %}
 {% endblock %}
